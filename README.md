@@ -15,8 +15,24 @@ This project provides a set of Maven artifacts containing platform-dependent
 Usage
 =====
 
-Following POM content shows how you can purpose `flatc` artifacts to compile
-`*.fbs` files under `src` directory.
+You can use `flatc` artifacts in your Maven projects to compile your FlatBuffers
+schemas (`*.fbs`) as follows:
+
+1. Add [flatbuffers](http://github.com/vy/flatbuffers) to your
+   dependencies to provide `com.google.flatbuffers` package
+   required by `flatc` generated Java files.
+
+2. Add necessary `flatc` artifact (e.g. `flatc-linux-x86_64`) to your
+   Maven dependencies.
+
+3. Use Maven Ant plugin to execute the `flatc` provided by the artifact.
+
+4. Use `build-helper-maven-plugin` to include generated sources in the
+   final package.
+
+Following `pom.xml` snippet shows how you can do these steps in detail.
+(Note that here it purposes `flatc` artifact to compile `*.fbs` files
+under `src` directory.)
 
 ```xml
 <properties>
